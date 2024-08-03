@@ -6,8 +6,8 @@ return [
         'parameters' => [
             'mysql:host=database:3306',
             'db',
-            'root',
-            'root',
+            'user',
+            'pass',
         ],
     ],
 ];

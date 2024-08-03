@@ -10,5 +10,5 @@ init:
 	@docker-compose exec php composer install
 demo:
 	make init
-	docker-compose exec -T database mysql --user=root --password=root db < sample/sample.sql
+	docker-compose exec -T database mysql --user=${DATABASE_USERNAME} --password=${DATABASE_PASSWORD} ${DATABASE_NAME} < sample/sample.sql
 	@echo "Visit URL http://localhost:8080"
