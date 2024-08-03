@@ -5,7 +5,10 @@ $services = require('services.php');
 return [
     'GET' => [
         '' => [
-            'controller' => 'HomepageController@index',
+            'controller' => 'HomePageController@index',
+        ],
+        'users' => [
+            'controller' => 'UsersController@index',
             'services' => [
                 'database' => $services['database'],
             ]

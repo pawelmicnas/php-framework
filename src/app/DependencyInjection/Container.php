@@ -9,10 +9,10 @@ use Psr\Container\ContainerInterface;
 
 class Container implements ContainerInterface
 {
-    /** @var array */
-    private $services;
+    public function __construct(private array $services = [])
+    {}
 
-    public function get($key)
+    public function get($key): mixed
     {
         if (!isset($this->services[$key])){
             throw new ServiceNotFoundException("No selected key {$key} in registered services.");
@@ -21,7 +21,7 @@ class Container implements ContainerInterface
         return $this->services[$key];
     }
 
-    public function set(string $key, $value)
+    public function set(string $key, $value): void
     {
         $this->services[$key] = $value;
     }
