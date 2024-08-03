@@ -8,10 +8,8 @@ use App\DependencyInjection\Container;
 
 abstract class AbstractController
 {
-    public function __construct(Container $app)
-    {
-        $this->app = $app;
-    }
+    public function __construct(protected readonly Container $app)
+    {}
 
     protected function render(string $template, array $variables = [])
     {

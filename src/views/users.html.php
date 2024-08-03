@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\Entity\User[] $users
+ */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-
-test
-
-<br>
+<h3>List of users</h3>
 <ul>
 <?php foreach ($users as $user): ?>
 <li><?= $user->getName(); ?></li>

@@ -8,7 +8,7 @@ use App\DependencyInjection\Container;
 
 class ContainerFactory
 {
-    public function createContainer(array $services)
+    public function createContainer(array $services = []): Container
     {
         $container = new Container();
         foreach ($services as $alias => $service) {

@@ -7,10 +7,10 @@ namespace App\Http;
 class Request
 {
     /** @var string $uri */
-    private $uri;
+    private string $uri;
 
     /** @var string $method */
-    private $method;
+    private string $method;
 
     public function __construct()
     {

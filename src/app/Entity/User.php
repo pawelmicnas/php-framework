@@ -20,10 +20,11 @@ class User extends AbstractEntity
     public function setId(int $id)
     {
         $this->id = $id;
+
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -31,6 +32,7 @@ class User extends AbstractEntity
     public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 }

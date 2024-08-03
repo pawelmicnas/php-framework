@@ -10,25 +10,19 @@ use Exception;
 
 class Router
 {
-    /** @var array $routes */
-    private $routes = [
-        'GET' => [],
-        'POST' => [],
-    ];
+    const string CONTROLLER_NAMESPACE = 'App\\Controller\\';
 
-    /** @var ContainerFactory */
-    private $containerFactory;
+    public function __construct(private readonly array $routes, private readonly ContainerFactory $containerFactory)
+    {}
 
-    public function __construct(array $routes, ContainerFactory $containerFactory)
-    {
-        $this->routes = $routes;
-        $this->containerFactory = $containerFactory;
-    }
-
+    /**
+     * @throws Exception
+     */
     public function direct(string $uri, string $method)
     {
         if (isset($this->routes[$method][$uri])) {
-            $app = $this->containerFactory->createContainer($this->routes[$method][$uri]['services']);
+            $app = $this->containerFactory->createContainer($this->routes[$method][$uri]['services'] ?? []);
+
             return $this->callMethodOfController($app, ...explode('@', $this->routes[$method][$uri]['controller']));
         }
 
@@ -37,7 +31,7 @@ class Router
 
     private function callMethodOfController(Container $app, $controller, $method)
     {
-        $controller = 'App\\Controller\\' . $controller;
+        $controller = self::CONTROLLER_NAMESPACE . $controller;
 
         return (new $controller($app))->$method();
     }

@@ -4,10 +4,10 @@ return [
     'database' => [
         'class' => 'App\\Database\\Database',
         'parameters' => [
-            'mysql:host=127.0.0.1',
-            'test',
+            'mysql:host=database:3306',
+            'db',
             'root',
-            'Aa12345',
+            'root',
         ],
     ],
 ];
